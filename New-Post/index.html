@@ -17,7 +17,7 @@
 1234hexo init blogcd blog#此间会提示你npm install n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开始使用Hexo搭建博客">
-<meta property="og:url" content="http://www.rikyliu.com/hexo/index.html">
+<meta property="og:url" content="http://www.rikyliu.com/New-Post/index.html">
 <meta property="og:site_name" content="Riky’s Blog">
 <meta property="og:description" content="告别wordpress之后，我一直在寻找代替品，试过复杂的Jetty，也试过其他基于LAMP的CMS，最终选择了Hexo，安装也不算复杂：
 
@@ -107,9 +107,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-New-Post" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo/" class="article-date">
+    <a href="/New-Post/" class="article-date">
   <time datetime="2015-03-25T22:33:49.000Z" itemprop="datePublished">2015-03-26</time>
 </a>
     
@@ -152,19 +152,24 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果需要发布的Github上，先在配置文件中配置好Github信息，这里需要现在github账号下创建项目blog（注意不要创建README）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">      <span class="built_in">type</span>: github</span><br><span class="line">      repository: https://github.com/lxy3372/blog.git</span><br><span class="line">      branch: gh-pages</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">      <span class="built_in">type</span>: github <span class="comment">#3.0之后 为git</span></span><br><span class="line">      repository: https://github.com/lxy3372/blog.git</span><br><span class="line">      branch: gh-pages</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>发布</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo deploy --generate</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>注意项（爬坑）</p>
+</li>
 </ol>
+<h5 id="安装插件">安装插件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 RSS 和 sitemap相关插件</span></span><br><span class="line">npm install hexo-generator-feed --save <span class="comment">#save不能丢，否则一直不会生效</span></span><br></pre></td></tr></table></figure>
+<h5 id="Github相关CNAME">Github相关CNAME</h5><p>如果直接在github上创建该文件，每次发布时，这个文件都会被覆盖掉，解决办法是在source下建立CNAME文件，每次发布都会push上去。</p>
+<h5 id="添加站内搜索">添加站内搜索</h5><p><a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype.html" target="_blank" rel="external">利用swiftype为hexo添加站内搜索</a>  该博客已经成功添加，但我按照此方法实现搜索时，在搜索页遇到部分JS问题，无法异步加载数据到Search页面。</p>
 <hr>
 <p>杂记：<br>   在折腾期间也遇到了一些问题，比如编辑_config.yml的时候，如果用vim编辑的话，在启动server的时候会出现格式错误的问题，而直接用文本编辑则不会出现这种问题，这可能跟我vim的配置有些关系。该文也是我参考了其他朋友的文章，按自己搭建的顺序写的，也算是重复造轮子了，不过当Markdown练练手也是不错的。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.rikyliu.com/hexo/" data-id="ci7qckz530001vyfykttqcj0p" class="article-share-link">Share</a>
+      <a data-url="http://www.rikyliu.com/New-Post/" data-id="ci7qckz5l000avyfyutvtz2tf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蜕变/">蜕变</a></li></ul>
@@ -175,11 +180,15 @@
     
 <nav id="article-nav">
   
-  
-    <a href="/New-Post/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">开始使用Hexo搭建博客</div>
+    <a href="/hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          开始使用Hexo搭建博客
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -189,7 +198,7 @@
 
 
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo/" data-title="开始使用Hexo搭建博客" data-url="http://www.rikyliu.com/hexo/"></div>
+	<div class="ds-thread" data-thread-key="New-Post/" data-title="开始使用Hexo搭建博客" data-url="http://www.rikyliu.com/New-Post/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

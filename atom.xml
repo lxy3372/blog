@@ -69,4 +69,64 @@
     
   </entry>
   
+  <entry>
+    <title><![CDATA[开始使用Hexo搭建博客]]></title>
+    <link href="http://www.rikyliu.com/New-Post/"/>
+    <id>http://www.rikyliu.com/New-Post/</id>
+    <published>2015-03-25T22:33:49.000Z</published>
+    <updated>2015-03-26T16:01:05.000Z</updated>
+    <content type="html"><![CDATA[<p>告别wordpress之后，我一直在寻找代替品，试过复杂的Jetty，也试过其他基于LAMP的CMS，最终选择了Hexo，安装也不算复杂：</p>
+<ol>
+<li><p>安装Node.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node  <span class="comment">#OS X 环境</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装Hexo</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后就可以在本地初始化博客了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="comment">#此间会提示你npm install </span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件_config.yml 配置站点信息,这个比较简单</p>
+</li>
+<li><p>生成新的文章</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"标题"</span> <span class="comment">#会在source/_post 下生成对应的md文件，采用markdown编辑器编辑即可</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后生成静态化站点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果需要发布的Github上，先在配置文件中配置好Github信息，这里需要现在github账号下创建项目blog（注意不要创建README）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">      <span class="built_in">type</span>: github <span class="comment">#3.0之后 为git</span></span><br><span class="line">      repository: https://github.com/lxy3372/blog.git</span><br><span class="line">      branch: gh-pages</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo deploy --generate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意项（爬坑）</p>
+</li>
+</ol>
+<h5 id="安装插件">安装插件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 RSS 和 sitemap相关插件</span></span><br><span class="line">npm install hexo-generator-feed --save <span class="comment">#save不能丢，否则一直不会生效</span></span><br></pre></td></tr></table></figure>
+<h5 id="Github相关CNAME">Github相关CNAME</h5><p>如果直接在github上创建该文件，每次发布时，这个文件都会被覆盖掉，解决办法是在source下建立CNAME文件，每次发布都会push上去。</p>
+<h5 id="添加站内搜索">添加站内搜索</h5><p><a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype.html" target="_blank" rel="external">利用swiftype为hexo添加站内搜索</a>  该博客已经成功添加，但我按照此方法实现搜索时，在搜索页遇到部分JS问题，无法异步加载数据到Search页面。</p>
+<hr>
+<p>杂记：<br>   在折腾期间也遇到了一些问题，比如编辑_config.yml的时候，如果用vim编辑的话，在启动server的时候会出现格式错误的问题，而直接用文本编辑则不会出现这种问题，这可能跟我vim的配置有些关系。该文也是我参考了其他朋友的文章，按自己搭建的顺序写的，也算是重复造轮子了，不过当Markdown练练手也是不错的。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>告别wordpress之后，我一直在寻找代替品，试过复杂的Jetty，也试过其他基于LAMP的CMS，最终选择了Hexo，安装也不算复杂：</p>
+<ol>
+<li><p>安装Node.js</p>
+<figure class="highlight bash"><table]]>
+    </summary>
+    
+      <category term="blog" scheme="http://www.rikyliu.com/tags/blog/"/>
+    
+      <category term="hexo" scheme="http://www.rikyliu.com/tags/hexo/"/>
+    
+      <category term="mac" scheme="http://www.rikyliu.com/tags/mac/"/>
+    
+      <category term="蜕变" scheme="http://www.rikyliu.com/tags/%E8%9C%95%E5%8F%98/"/>
+    
+  </entry>
+  
 </feed>
