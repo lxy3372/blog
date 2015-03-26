@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Riky]]></title>
-  <subtitle><![CDATA[Riky`s Blog]]></subtitle>
+  <title><![CDATA[Riky’s Blog]]></title>
+  <subtitle><![CDATA[Keep it simple.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.rikyliu.com/"/>
   <updated>2015-03-25T23:00:53.000Z</updated>
@@ -9,7 +9,7 @@
   
   <author>
     <name><![CDATA[Riky Liu]]></name>
-    
+    <email><![CDATA[me@rikyliu.com]]></email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
