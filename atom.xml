@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep it simple.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.rikyliu.com/"/>
-  <updated>2015-04-01T16:15:46.000Z</updated>
+  <updated>2015-04-01T22:44:13.000Z</updated>
   <id>http://www.rikyliu.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.rikyliu.com/php-empty-empty-boolval-isset/"/>
     <id>http://www.rikyliu.com/php-empty-empty-boolval-isset/</id>
     <published>2015-04-01T14:58:02.000Z</published>
-    <updated>2015-04-01T16:15:46.000Z</updated>
+    <updated>2015-04-01T22:44:13.000Z</updated>
     <content type="html"><![CDATA[<p>公司后端用Java重构后已经有几个月没写过PHP了，虽然PHP不是很出色的语言，但也是我进入工作后的第一语言，我也没打算放弃它。前那两天看到一个关于类型判断的帖子，觉得挺有趣的，虽然不复杂，却也挺考验PHP基础的功底的。</p>
 <p>函数 <em><code>gettype(), empty(), is_null(), isset(), boolval()</code></em> 这几个在获取参数判断类型上常用的方法，感觉还是特别容易出错的，因此我在自己测试了之后总结如下：</p>
 <table>
