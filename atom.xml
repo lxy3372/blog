@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep it simple.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.rikyliu.com/"/>
-  <updated>2015-03-30T22:41:19.000Z</updated>
+  <updated>2015-04-01T16:15:46.000Z</updated>
   <id>http://www.rikyliu.com/</id>
   
   <author>
@@ -13,6 +13,155 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[PHP简单类型转换及类型函数判断下的区别]]></title>
+    <link href="http://www.rikyliu.com/php-empty-empty-boolval-isset/"/>
+    <id>http://www.rikyliu.com/php-empty-empty-boolval-isset/</id>
+    <published>2015-04-01T14:58:02.000Z</published>
+    <updated>2015-04-01T16:15:46.000Z</updated>
+    <content type="html"><![CDATA[<p>公司后端用Java重构后已经有几个月没写过PHP了，虽然PHP不是很出色的语言，但也是我进入工作后的第一语言，我也没打算放弃它。前那两天看到一个关于类型判断的帖子，觉得挺有趣的，虽然不复杂，却也挺考验PHP基础的功底的。</p>
+<p>函数 <em><code>gettype(), empty(), is_null(), isset(), boolval()</code></em> 这几个在获取参数判断类型上常用的方法，感觉还是特别容易出错的，因此我在自己测试了之后总结如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>gettype()</th>
+<th>empty()</th>
+<th>is_null()</th>
+<th>isset()</th>
+<th>boolval()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$val=””;</td>
+<td>String</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$val=null;</td>
+<td>NULL</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>var $val</td>
+<td>NULL</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$val=array()</td>
+<td>Array</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$val=false;</td>
+<td>boolean</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$var=1</td>
+<td>int</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$var=0</td>
+<td>int</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$var=-1</td>
+<td>int</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$var=”9”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$var=”0”</td>
+<td>string</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$var=”hello”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$val=”ture”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$val=”false”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p>以上是正确的格式对照表。<br><a id="more"></a></p>
+<h5 id="我自己在测试的过程中也出现了一些疑问：">我自己在测试的过程中也出现了一些疑问：</h5><ol>
+<li><p>bool值false在判断是否为空时，显示为空</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$val</span>=<span class="keyword">false</span>; </span><br><span class="line">var_dump(<span class="keyword">empty</span>(<span class="variable">$val</span>));</span><br><span class="line"><span class="comment">#print bool（true）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字0在判断为空是，显示为true</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$val</span>=<span class="number">0</span>;</span><br><span class="line">var_dump(<span class="keyword">empty</span>(<span class="variable">$val</span>));</span><br><span class="line"><span class="comment">#print bool(true）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串0在判断为空是，显示为true</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$val</span>=<span class="string">"0"</span>;</span><br><span class="line">var_dump(<span class="keyword">empty</span>(<span class="variable">$val</span>));</span><br><span class="line"><span class="comment">#print bool(true）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>更重要的是<code>$val=&quot;&quot;;</code>和<code>$val=&quot;0&quot;;</code>的判断的结果是一样的，这些我可以通过PHP的弱类型自动转换来解释，但之后我做了一个简单的实验，一时无法让我开窍了：<br><img src="http://7xi3xm.com1.z0.glb.clouddn.com/php.jpg" alt="php代码"><br>按图上的推理逻辑，<code>&#39;&#39;</code>那就应该是等于<code>&#39;0&#39;</code>了，这难道是我自己钻了牛角尖么？<br>答案是确实是自己走进了死胡同，PHP在不同类型做比较的时候会进行转换，但相同类型则没有转换成false的问题，因此就出现了这种让自己觉得可笑的事情。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[PHP简单类型转换及类型函数gettype(), empty(), is_null(), isset(), boolval()的区别]]>
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.rikyliu.com/tags/PHP/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[MyBatis动态SQL优化方案之@UpdateProvider]]></title>

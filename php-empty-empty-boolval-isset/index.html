@@ -3,47 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Riky</title>
+  <title>PHP简单类型转换及类型函数判断下的区别 | Riky</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;copy; 2015 Riky Liu
-		Powered by Hexo
-	
-
-
-
-	(function(w,d,t,u,n,s,e){w[&apos;SwiftypeObject&apos;]=n;w[n]=w[n]||function(){
-			(w[n].q=w[n].q||[]).push(arguments);
-		
-};s=d.createElement(t);
-e=d.getElementsByT">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Riky">
-<meta property="og:url" content="http://www.rikyliu.com/404.html">
+  <meta name="description" content="PHP简单类型转换及类型函数gettype(), empty(), is_null(), isset(), boolval()的区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP简单类型转换及类型函数判断下的区别">
+<meta property="og:url" content="http://www.rikyliu.com/php-empty-empty-boolval-isset/index.html">
 <meta property="og:site_name" content="Riky">
-<meta property="og:description" content="&amp;copy; 2015 Riky Liu
-		Powered by Hexo
-	
-
-
-
-	(function(w,d,t,u,n,s,e){w[&apos;SwiftypeObject&apos;]=n;w[n]=w[n]||function(){
-			(w[n].q=w[n].q||[]).push(arguments);
-		
-};s=d.createElement(t);
-e=d.getElementsByT">
+<meta property="og:description" content="PHP简单类型转换及类型函数gettype(), empty(), is_null(), isset(), boolval()的区别">
+<meta property="og:image" content="http://7xi3xm.com1.z0.glb.clouddn.com/php.jpg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Riky">
-<meta name="twitter:description" content="&amp;copy; 2015 Riky Liu
-		Powered by Hexo
-	
-
-
-
-	(function(w,d,t,u,n,s,e){w[&apos;SwiftypeObject&apos;]=n;w[n]=w[n]||function(){
-			(w[n].q=w[n].q||[]).push(arguments);
-		
-};s=d.createElement(t);
-e=d.getElementsByT">
+<meta name="twitter:title" content="PHP简单类型转换及类型函数判断下的区别">
+<meta name="twitter:description" content="PHP简单类型转换及类型函数gettype(), empty(), is_null(), isset(), boolval()的区别">
   
     <link rel="alternative" href="/atom.xml" title="Riky" type="application/atom+xml">
   
@@ -116,40 +87,161 @@ e=d.getElementsByT">
 </header>
 
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-php-empty-empty-boolval-isset" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/404.html" class="article-date">
-  <time datetime="2015-03-26T23:49:34.000Z" itemprop="datePublished">2015-03-27</time>
+    <a href="/php-empty-empty-boolval-isset/" class="article-date">
+  <time datetime="2015-04-01T14:58:02.000Z" itemprop="datePublished">2015-04-01</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP简单类型转换及类型函数判断下的区别
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
-<footer id="footer">
-<div class="outer">
-	<div id="footer-info" class="inner">
-		&copy; 2015 Riky Liu<br>
-		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-	</div>
-</div>
-</footer>
-<script type="text/javascript">
-	(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-			(w[n].q=w[n].q||[]).push(arguments);
-		
-};s=d.createElement(t);
-e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-	    
-				
-				})(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
-		
-				_st('install','spVAiRGyhy7nX5pps-gs');
-			</script>
-		
+        <p>公司后端用Java重构后已经有几个月没写过PHP了，虽然PHP不是很出色的语言，但也是我进入工作后的第一语言，我也没打算放弃它。前那两天看到一个关于类型判断的帖子，觉得挺有趣的，虽然不复杂，却也挺考验PHP基础的功底的。</p>
+<p>函数 <em><code>gettype(), empty(), is_null(), isset(), boolval()</code></em> 这几个在获取参数判断类型上常用的方法，感觉还是特别容易出错的，因此我在自己测试了之后总结如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>gettype()</th>
+<th>empty()</th>
+<th>is_null()</th>
+<th>isset()</th>
+<th>boolval()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$val=””;</td>
+<td>String</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$val=null;</td>
+<td>NULL</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>var $val</td>
+<td>NULL</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$val=array()</td>
+<td>Array</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$val=false;</td>
+<td>boolean</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$var=1</td>
+<td>int</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$var=0</td>
+<td>int</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$var=-1</td>
+<td>int</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$var=”9”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$var=”0”</td>
+<td>string</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$var=”hello”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$val=”ture”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$val=”false”</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p>以上是正确的格式对照表。<br><a id="more"></a></p>
+<h5 id="我自己在测试的过程中也出现了一些疑问：">我自己在测试的过程中也出现了一些疑问：</h5><ol>
+<li><p>bool值false在判断是否为空时，显示为空</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$val</span>=<span class="keyword">false</span>; </span><br><span class="line">var_dump(<span class="keyword">empty</span>(<span class="variable">$val</span>));</span><br><span class="line"><span class="comment">#print bool（true）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字0在判断为空是，显示为true</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$val</span>=<span class="number">0</span>;</span><br><span class="line">var_dump(<span class="keyword">empty</span>(<span class="variable">$val</span>));</span><br><span class="line"><span class="comment">#print bool(true）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串0在判断为空是，显示为true</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$val</span>=<span class="string">"0"</span>;</span><br><span class="line">var_dump(<span class="keyword">empty</span>(<span class="variable">$val</span>));</span><br><span class="line"><span class="comment">#print bool(true）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>更重要的是<code>$val=&quot;&quot;;</code>和<code>$val=&quot;0&quot;;</code>的判断的结果是一样的，这些我可以通过PHP的弱类型自动转换来解释，但之后我做了一个简单的实验，一时无法让我开窍了：<br><img src="http://7xi3xm.com1.z0.glb.clouddn.com/php.jpg" alt="php代码"><br>按图上的推理逻辑，<code>&#39;&#39;</code>那就应该是等于<code>&#39;0&#39;</code>了，这难道是我自己钻了牛角尖么？<br>答案是确实是自己走进了死胡同，PHP在不同类型做比较的时候会进行转换，但相同类型则没有转换成false的问题，因此就出现了这种让自己觉得可笑的事情。</p>
 
       
     </div>
@@ -164,17 +256,29 @@ e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
 	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/java-mybatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MyBatis动态SQL优化方案之@UpdateProvider</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
 
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="404.html" data-title="" data-url="http://www.rikyliu.com/404.html"></div>
+	<div class="ds-thread" data-thread-key="php-empty-empty-boolval-isset/" data-title="PHP简单类型转换及类型函数判断下的区别" data-url="http://www.rikyliu.com/php-empty-empty-boolval-isset/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
