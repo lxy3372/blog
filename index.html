@@ -5,6 +5,8 @@
   
   <title>Riky</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="google-site-verification" content="5hpOMWQZFpTDAuhF40D1gw3dxxSfyq0NGjY_3J7yQIo" />
+  <meta name="Keywords" content="riky,rikyliu,rikyliu.com, keep it simple.">
   <meta name="description" content="Riky’sBlog, keep it simple.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Riky">
@@ -100,6 +102,59 @@ ga('send', 'pageview');
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-php-fpm-shell" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/php-fpm-shell/" class="article-date">
+  <time datetime="2015-04-22T14:12:55.000Z" itemprop="datePublished">2015-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/php-fpm-shell/">简单的进程启动和关闭Shell脚本制作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>整个Shell相对简单，重点理解<code>awk</code> ，管道<code>|</code>,以及 <code>xargs kill -9</code> 应该就比较清晰了，<br>整个过程就是一个查询-&gt;筛选-&gt;然后kill-&gt;到在启动的过程，其他服务如Redis,MongoDB,Memecache以及Mysql和Apache都可以用类似的方式来制作简单的Shell脚本。<br>使用相对简单：<code>./php-fpm.sh start</code><br>如果不能放到/bin/bash目录，可以采用软连接<code>ln -s</code>或者别名<code>alias fpm=&#39;/usr/local/bash/php-fpm.sh&#39;</code>的方式来简化命令操作：</p>
+<h4 id="别名：">别名：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#命令行操作即可</span></span><br><span class="line"><span class="comment">#输出到.bashrc</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"alias phpfpm='/usr/local/bash/php-fpm'"</span>&gt;&gt;~/.bashrc</span><br><span class="line"><span class="comment">#使其生效</span></span><br><span class="line">soure ~/.bashrc</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/php-fpm-shell/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-php-empty-empty-boolval-isset" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -402,7 +457,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java/" style="font-size: NaNpx;">Java</a><a href="/tags/MyBatis/" style="font-size: NaNpx;">MyBatis</a><a href="/tags/PHP/" style="font-size: NaNpx;">PHP</a><a href="/tags/UpdateProvider/" style="font-size: NaNpx;">UpdateProvider</a><a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/mac/" style="font-size: NaNpx;">mac</a><a href="/tags/蜕变/" style="font-size: NaNpx;">蜕变</a>
+      <a href="/tags/Java/" style="font-size: NaNpx;">Java</a><a href="/tags/MyBatis/" style="font-size: NaNpx;">MyBatis</a><a href="/tags/PHP/" style="font-size: NaNpx;">PHP</a><a href="/tags/UpdateProvider/" style="font-size: NaNpx;">UpdateProvider</a><a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/mac/" style="font-size: NaNpx;">mac</a><a href="/tags/php/" style="font-size: NaNpx;">php</a><a href="/tags/shell/" style="font-size: NaNpx;">shell</a><a href="/tags/蜕变/" style="font-size: NaNpx;">蜕变</a>
     </div>
   </div>
 
@@ -412,7 +467,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -423,6 +478,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">最近文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/php-fpm-shell/">简单的进程启动和关闭Shell脚本制作</a>
+          </li>
         
           <li>
             <a href="/php-empty-empty-boolval-isset/">PHP简单类型转换及类型函数判断下的区别</a>
