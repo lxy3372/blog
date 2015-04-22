@@ -103,6 +103,63 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-git-github-account" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/git-github-account/" class="article-date">
+  <time datetime="2015-04-22T14:33:31.000Z" itemprop="datePublished">2015-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/git-github-account/">客户端设置多个github账号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近由于需要在自己的电脑上办公，需要远程连接公司的Gitblit。但本机已经简单的配置GitHub的一些账号信息。在两个账号切换的过程中会有些麻烦，于是Google下，有了以下的解决方案：</p>
+<h4 id="（参考:_http://www-cnblogs-com/sosoft/p/3477578-html）">（参考: <a href="http://www.cnblogs.com/sosoft/p/3477578.html）">http://www.cnblogs.com/sosoft/p/3477578.html）</a></h4><h3 id="步骤一：用ssh-keygen命令生成一组新的id_rsa_new和id_rsa_new-pub。">步骤一：用<code>ssh-keygen</code>命令生成一组新的id_rsa_new和id_rsa_new.pub。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#34;new email&#34;</span><br></pre></td></tr></table></figure>
+<p>平时我们都是直接回车，默认生成id_rsa和id_rsa.pub。这里特别需要注意，出现提示输入文件名的时候要输入与默认配置不一样的文件名，比如： id_rsa_new。</p>
+<h3 id="步骤二：配置~/-ssh/config文件，以我自己的机器为例。">步骤二：配置~/.ssh/config文件，以我自己的机器为例。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Default Git&#10;&#10;Host chdxy# &#27604;&#22914; chdxy&#10;&#10;HostName IP Address #&#19968;&#33324;&#37319;&#29992;&#23545;&#24212;&#22495;&#21517;&#21363;&#21487;  github.com&#10;&#10;User think #&#35813;&#29992;&#25143;&#20026;github&#36134;&#25143;&#29992;&#25143;&#21517;  &#22914;  CHDTEAM&#10;&#10;IdentityFile ~/.ssh/id_rsa&#10;&#10;#Second Git   &#21516;&#19978;&#37197;&#32622;&#37319;&#29992;&#19968;&#26679;&#30340;&#21363;&#21487;&#10;&#10;Host secondgit&#10;&#10;HostName IP Address #&#22495;&#21517;&#20063;&#21487;&#10;&#10;User think&#10;&#10;IdentityFile ~/.ssh/id_rsa_second</span><br></pre></td></tr></table></figure>
+<p>Host就是每个SSH连接的单独代号，IdentityFile告诉SSH连接去读取哪个私钥。</p>
+<h3 id="步骤三：执行ssh-agent让ssh识别新的私钥。">步骤三：执行ssh-agent让ssh识别新的私钥。</h3>
+        
+          <p class="article-more-link">
+            <a href="/git-github-account/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
     <article id="post-php-fpm-shell" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/php-fpm-shell/" class="article-date">
@@ -457,7 +514,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java/" style="font-size: NaNpx;">Java</a><a href="/tags/MyBatis/" style="font-size: NaNpx;">MyBatis</a><a href="/tags/PHP/" style="font-size: NaNpx;">PHP</a><a href="/tags/UpdateProvider/" style="font-size: NaNpx;">UpdateProvider</a><a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/mac/" style="font-size: NaNpx;">mac</a><a href="/tags/php/" style="font-size: NaNpx;">php</a><a href="/tags/shell/" style="font-size: NaNpx;">shell</a><a href="/tags/蜕变/" style="font-size: NaNpx;">蜕变</a>
+      <a href="/tags/Git/" style="font-size: NaNpx;">Git</a><a href="/tags/GitHub/" style="font-size: NaNpx;">GitHub</a><a href="/tags/Java/" style="font-size: NaNpx;">Java</a><a href="/tags/MyBatis/" style="font-size: NaNpx;">MyBatis</a><a href="/tags/PHP/" style="font-size: NaNpx;">PHP</a><a href="/tags/UpdateProvider/" style="font-size: NaNpx;">UpdateProvider</a><a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/mac/" style="font-size: NaNpx;">mac</a><a href="/tags/php/" style="font-size: NaNpx;">php</a><a href="/tags/shell/" style="font-size: NaNpx;">shell</a><a href="/tags/蜕变/" style="font-size: NaNpx;">蜕变</a>
     </div>
   </div>
 
@@ -467,7 +524,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -478,6 +535,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">最近文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/git-github-account/">客户端设置多个github账号</a>
+          </li>
         
           <li>
             <a href="/php-fpm-shell/">简单的进程启动和关闭Shell脚本制作</a>

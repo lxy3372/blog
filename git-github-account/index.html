@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>开始使用Hexo搭建博客 | Riky</title>
+  <title>客户端设置多个github账号 | Riky</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="google-site-verification" content="5hpOMWQZFpTDAuhF40D1gw3dxxSfyq0NGjY_3J7yQIo" />
   <meta name="Keywords" content="riky,rikyliu,rikyliu.com, keep it simple.">
-  <meta name="description" content="Hexo使用心得">
+  <meta name="description" content="客户端git配置多个github账号">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开始使用Hexo搭建博客">
-<meta property="og:url" content="http://www.rikyliu.com/hexo/index.html">
+<meta property="og:title" content="客户端设置多个github账号">
+<meta property="og:url" content="http://www.rikyliu.com/git-github-account/index.html">
 <meta property="og:site_name" content="Riky">
-<meta property="og:description" content="Hexo使用心得">
+<meta property="og:description" content="客户端git配置多个github账号">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开始使用Hexo搭建博客">
-<meta name="twitter:description" content="Hexo使用心得">
+<meta name="twitter:title" content="客户端设置多个github账号">
+<meta name="twitter:description" content="客户端git配置多个github账号">
   
     <link rel="alternative" href="/atom.xml" title="Riky" type="application/atom+xml">
   
@@ -101,10 +101,10 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git-github-account" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo/" class="article-date">
-  <time datetime="2015-03-25T22:33:49.000Z" itemprop="datePublished">2015-03-26</time>
+    <a href="/git-github-account/" class="article-date">
+  <time datetime="2015-04-22T14:33:31.000Z" itemprop="datePublished">2015-04-22</time>
 </a>
     
   </div>
@@ -115,7 +115,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      开始使用Hexo搭建博客
+      客户端设置多个github账号
     </h1>
   
 
@@ -123,43 +123,20 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>告别wordpress之后，我一直在寻找代替品，试过复杂的Jetty，也试过其他基于LAMP的CMS，最终选择了Hexo，安装也不算复杂：</p>
-<ol>
-<li><p>安装Node.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node  <span class="comment">#OS X 环境</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装Hexo</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>之后就可以在本地初始化博客了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="comment">#此间会提示你npm install </span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件_config.yml 配置站点信息,这个比较简单</p>
-<a id="more"></a></li>
-<li><p>生成新的文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"标题"</span> <span class="comment">#会在source/_post 下生成对应的md文件，采用markdown编辑器编辑即可</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后生成静态化站点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>本地测试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果需要发布的Github上，先在配置文件中配置好Github信息，这里需要现在github账号下创建项目blog（注意不要创建README）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">      <span class="built_in">type</span>: github <span class="comment">#3.0之后 为git</span></span><br><span class="line">      repository: https://github.com/lxy3372/blog.git</span><br><span class="line">      branch: gh-pages</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发布</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo deploy --generate</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意项（爬坑）</p>
-</li>
-</ol>
-<h5 id="安装插件">安装插件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 RSS 和 sitemap相关插件</span></span><br><span class="line">npm install hexo-generator-feed --save <span class="comment">#save不能丢，否则一直不会生效</span></span><br></pre></td></tr></table></figure>
-<h5 id="Github相关CNAME">Github相关CNAME</h5><p>如果直接在github上创建该文件，每次发布时，这个文件都会被覆盖掉，解决办法是在source下建立CNAME文件，每次发布都会push上去。</p>
-<h5 id="添加站内搜索">添加站内搜索</h5><p><a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype.html" target="_blank" rel="external">利用swiftype为hexo添加站内搜索</a>  该博客已经成功添加，但我按照此方法实现搜索时，在搜索页遇到部分JS问题，无法异步加载数据到Search页面。</p>
-<hr>
-<p>杂记：<br>   在折腾期间也遇到了一些问题，比如编辑_config.yml的时候，如果用vim编辑的话，在启动server的时候会出现格式错误的问题，而直接用文本编辑则不会出现这种问题，这可能跟我vim的配置有些关系。该文也是我参考了其他朋友的文章，按自己搭建的顺序写的，也算是重复造轮子了，不过当Markdown练练手也是不错的。</p>
-
+        <p>最近由于需要在自己的电脑上办公，需要远程连接公司的Gitblit。但本机已经简单的配置GitHub的一些账号信息。在两个账号切换的过程中会有些麻烦，于是Google下，有了以下的解决方案：</p>
+<h4 id="（参考:_http://www-cnblogs-com/sosoft/p/3477578-html）">（参考: <a href="http://www.cnblogs.com/sosoft/p/3477578.html）" target="_blank" rel="external">http://www.cnblogs.com/sosoft/p/3477578.html）</a></h4><h3 id="步骤一：用ssh-keygen命令生成一组新的id_rsa_new和id_rsa_new-pub。">步骤一：用<code>ssh-keygen</code>命令生成一组新的id_rsa_new和id_rsa_new.pub。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#34;new email&#34;</span><br></pre></td></tr></table></figure>
+<p>平时我们都是直接回车，默认生成id_rsa和id_rsa.pub。这里特别需要注意，出现提示输入文件名的时候要输入与默认配置不一样的文件名，比如： id_rsa_new。</p>
+<h3 id="步骤二：配置~/-ssh/config文件，以我自己的机器为例。">步骤二：配置~/.ssh/config文件，以我自己的机器为例。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Default Git&#10;&#10;Host chdxy# &#27604;&#22914; chdxy&#10;&#10;HostName IP Address #&#19968;&#33324;&#37319;&#29992;&#23545;&#24212;&#22495;&#21517;&#21363;&#21487;  github.com&#10;&#10;User think #&#35813;&#29992;&#25143;&#20026;github&#36134;&#25143;&#29992;&#25143;&#21517;  &#22914;  CHDTEAM&#10;&#10;IdentityFile ~/.ssh/id_rsa&#10;&#10;#Second Git   &#21516;&#19978;&#37197;&#32622;&#37319;&#29992;&#19968;&#26679;&#30340;&#21363;&#21487;&#10;&#10;Host secondgit&#10;&#10;HostName IP Address #&#22495;&#21517;&#20063;&#21487;&#10;&#10;User think&#10;&#10;IdentityFile ~/.ssh/id_rsa_second</span><br></pre></td></tr></table></figure>
+<p>Host就是每个SSH连接的单独代号，IdentityFile告诉SSH连接去读取哪个私钥。</p>
+<h3 id="步骤三：执行ssh-agent让ssh识别新的私钥。">步骤三：执行ssh-agent让ssh识别新的私钥。</h3><a id="more"></a>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># &#22810;&#20010;&#36134;&#21495;&#30340;ssh-key &#37117;&#38656;&#35201;&#21152;&#36827;&#26469;&#10;&#10;#&#26368;&#22909;&#20808;&#27979;&#35797;&#19979;&#26159;&#21542;&#36830;&#25509;&#25104;&#21151;  ssh -T git@chdxy   &#65288;&#19968;&#33324;&#40664;&#35748;&#20026;git@github.com &#27492;&#22788;&#35774;&#32622;&#20102;Host&#65292;&#37319;&#29992;&#33258;&#24049;&#36134;&#21495;&#30340;Host&#21363;&#21487;&#65289;&#10;&#10;ssh-add ~/.ssh/id_rsa_new&#10;ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<p>该命令如果报错：Could not open a connection to your authentication agent.无法连接到ssh agent，可执行ssh-agent bash命令后再执行ssh-add命令。<br>以后，在clone或者add remote的时候，需要把config文件中的host代替git@remoteaddress中的remoteaddress。</p>
+<p>同时，你可以通过在特定的repo下执行下面的命令，生成区别于全局设置的user.name和user.email。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &#34;newname&#34;&#10;&#10;git config user.email &#34;newemail&#34;&#10;&#10;#git config --global --unset user.name &#21462;&#28040;&#20840;&#23616;&#35774;&#32622;&#10;&#10;#git config --global --unset user.email &#21462;&#28040;&#20840;&#23616;&#35774;&#32622;&#10;&#10;#&#22312;&#21516;&#19968;&#26426;&#22120;&#19981;&#21516;&#30446;&#24405;&#19979;&#20811;&#38534;&#36828;&#31243;&#21516;&#19968;&#20010;repo</span><br></pre></td></tr></table></figure></p>
+<p>然后执行对应的clone操作就可以了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/user1&#10;&#10;git clone git@chdxy/chdxy:xxx.git   #&#26684;&#24335;  git clone git@Host:&#29992;&#25143;&#21517;/&#20855;&#20307;.git   &#21363;&#25226;&#40664;&#35748;&#30340;github.com &#25913;&#25104; &#8220;Host&#8221;&#10;&#10;cd /home/user2&#10;git clone git@secondgit:User/xxx.git</span><br></pre></td></tr></table></figure>
+<p>上面的两条clone命令，虽然关联到同一个repo，却是通过不同ssh连接，当然也是不同的git账号。<br>注意：以上不要设置全局的user 和email 直接设置当前仓库的user 和email即可 （去掉—global，如果已设置加上—unset参数即可）</p>
+<p>接下来的各种操作（pull、push、fetch和普通的一样）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -173,7 +150,7 @@ ga('send', 'pageview');
 	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蜕变/">蜕变</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li></ul>
 
     </footer>
   </div>
@@ -181,15 +158,11 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/java-mybatis/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          MyBatis动态SQL优化方案之@UpdateProvider
-        
-      </div>
-    </a>
   
+    <a href="/php-fpm-shell/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">简单的进程启动和关闭Shell脚本制作</div>
+    </a>
   
 </nav>
 
@@ -199,7 +172,7 @@ ga('send', 'pageview');
 
 
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo/" data-title="开始使用Hexo搭建博客" data-url="http://www.rikyliu.com/hexo/"></div>
+	<div class="ds-thread" data-thread-key="git-github-account/" data-title="客户端设置多个github账号" data-url="http://www.rikyliu.com/git-github-account/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

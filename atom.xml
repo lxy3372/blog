@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep it simple.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.rikyliu.com/"/>
-  <updated>2015-04-22T14:21:21.000Z</updated>
+  <updated>2015-04-22T14:44:34.000Z</updated>
   <id>http://www.rikyliu.com/</id>
   
   <author>
@@ -15,11 +15,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[客户端设置多个github账号]]></title>
+    <link href="http://www.rikyliu.com/git-github-account/"/>
+    <id>http://www.rikyliu.com/git-github-account/</id>
+    <published>2015-04-22T14:33:31.000Z</published>
+    <updated>2015-04-22T14:44:34.000Z</updated>
+    <content type="html"><![CDATA[<p>最近由于需要在自己的电脑上办公，需要远程连接公司的Gitblit。但本机已经简单的配置GitHub的一些账号信息。在两个账号切换的过程中会有些麻烦，于是Google下，有了以下的解决方案：</p>
+<h4 id="（参考:_http://www-cnblogs-com/sosoft/p/3477578-html）">（参考: <a href="http://www.cnblogs.com/sosoft/p/3477578.html）" target="_blank" rel="external">http://www.cnblogs.com/sosoft/p/3477578.html）</a></h4><h3 id="步骤一：用ssh-keygen命令生成一组新的id_rsa_new和id_rsa_new-pub。">步骤一：用<code>ssh-keygen</code>命令生成一组新的id_rsa_new和id_rsa_new.pub。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#34;new email&#34;</span><br></pre></td></tr></table></figure>
+<p>平时我们都是直接回车，默认生成id_rsa和id_rsa.pub。这里特别需要注意，出现提示输入文件名的时候要输入与默认配置不一样的文件名，比如： id_rsa_new。</p>
+<h3 id="步骤二：配置~/-ssh/config文件，以我自己的机器为例。">步骤二：配置~/.ssh/config文件，以我自己的机器为例。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Default Git&#10;&#10;Host chdxy# &#27604;&#22914; chdxy&#10;&#10;HostName IP Address #&#19968;&#33324;&#37319;&#29992;&#23545;&#24212;&#22495;&#21517;&#21363;&#21487;  github.com&#10;&#10;User think #&#35813;&#29992;&#25143;&#20026;github&#36134;&#25143;&#29992;&#25143;&#21517;  &#22914;  CHDTEAM&#10;&#10;IdentityFile ~/.ssh/id_rsa&#10;&#10;#Second Git   &#21516;&#19978;&#37197;&#32622;&#37319;&#29992;&#19968;&#26679;&#30340;&#21363;&#21487;&#10;&#10;Host secondgit&#10;&#10;HostName IP Address #&#22495;&#21517;&#20063;&#21487;&#10;&#10;User think&#10;&#10;IdentityFile ~/.ssh/id_rsa_second</span><br></pre></td></tr></table></figure>
+<p>Host就是每个SSH连接的单独代号，IdentityFile告诉SSH连接去读取哪个私钥。</p>
+<h3 id="步骤三：执行ssh-agent让ssh识别新的私钥。">步骤三：执行ssh-agent让ssh识别新的私钥。</h3><a id="more"></a>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># &#22810;&#20010;&#36134;&#21495;&#30340;ssh-key &#37117;&#38656;&#35201;&#21152;&#36827;&#26469;&#10;&#10;#&#26368;&#22909;&#20808;&#27979;&#35797;&#19979;&#26159;&#21542;&#36830;&#25509;&#25104;&#21151;  ssh -T git@chdxy   &#65288;&#19968;&#33324;&#40664;&#35748;&#20026;git@github.com &#27492;&#22788;&#35774;&#32622;&#20102;Host&#65292;&#37319;&#29992;&#33258;&#24049;&#36134;&#21495;&#30340;Host&#21363;&#21487;&#65289;&#10;&#10;ssh-add ~/.ssh/id_rsa_new&#10;ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<p>该命令如果报错：Could not open a connection to your authentication agent.无法连接到ssh agent，可执行ssh-agent bash命令后再执行ssh-add命令。<br>以后，在clone或者add remote的时候，需要把config文件中的host代替git@remoteaddress中的remoteaddress。</p>
+<p>同时，你可以通过在特定的repo下执行下面的命令，生成区别于全局设置的user.name和user.email。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &#34;newname&#34;&#10;&#10;git config user.email &#34;newemail&#34;&#10;&#10;#git config --global --unset user.name &#21462;&#28040;&#20840;&#23616;&#35774;&#32622;&#10;&#10;#git config --global --unset user.email &#21462;&#28040;&#20840;&#23616;&#35774;&#32622;&#10;&#10;#&#22312;&#21516;&#19968;&#26426;&#22120;&#19981;&#21516;&#30446;&#24405;&#19979;&#20811;&#38534;&#36828;&#31243;&#21516;&#19968;&#20010;repo</span><br></pre></td></tr></table></figure></p>
+<p>然后执行对应的clone操作就可以了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/user1&#10;&#10;git clone git@chdxy/chdxy:xxx.git   #&#26684;&#24335;  git clone git@Host:&#29992;&#25143;&#21517;/&#20855;&#20307;.git   &#21363;&#25226;&#40664;&#35748;&#30340;github.com &#25913;&#25104; &#8220;Host&#8221;&#10;&#10;cd /home/user2&#10;git clone git@secondgit:User/xxx.git</span><br></pre></td></tr></table></figure>
+<p>上面的两条clone命令，虽然关联到同一个repo，却是通过不同ssh连接，当然也是不同的git账号。<br>注意：以上不要设置全局的user 和email 直接设置当前仓库的user 和email即可 （去掉—global，如果已设置加上—unset参数即可）</p>
+<p>接下来的各种操作（pull、push、fetch和普通的一样）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[客户端git配置多个github账号]]>
+    
+    </summary>
+    
+      <category term="Git" scheme="http://www.rikyliu.com/tags/Git/"/>
+    
+      <category term="GitHub" scheme="http://www.rikyliu.com/tags/GitHub/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[简单的进程启动和关闭Shell脚本制作]]></title>
     <link href="http://www.rikyliu.com/php-fpm-shell/"/>
     <id>http://www.rikyliu.com/php-fpm-shell/</id>
     <published>2015-04-22T14:12:55.000Z</published>
-    <updated>2015-04-22T14:21:21.000Z</updated>
+    <updated>2015-04-22T14:29:46.000Z</updated>
     <content type="html"><![CDATA[<p>整个Shell相对简单，重点理解<code>awk</code> ，管道<code>|</code>,以及 <code>xargs kill -9</code> 应该就比较清晰了，<br>整个过程就是一个查询-&gt;筛选-&gt;然后kill-&gt;到在启动的过程，其他服务如Redis,MongoDB,Memecache以及Mysql和Apache都可以用类似的方式来制作简单的Shell脚本。<br>使用相对简单：<code>./php-fpm.sh start</code><br>如果不能放到/bin/bash目录，可以采用软连接<code>ln -s</code>或者别名<code>alias fpm=&#39;/usr/local/bash/php-fpm.sh&#39;</code>的方式来简化命令操作：</p>
 <h4 id="别名：">别名：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#命令行操作即可</span></span><br><span class="line"><span class="comment">#输出到.bashrc</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"alias phpfpm='/usr/local/bash/php-fpm'"</span>&gt;&gt;~/.bashrc</span><br><span class="line"><span class="comment">#使其生效</span></span><br><span class="line">soure ~/.bashrc</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
