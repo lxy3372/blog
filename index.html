@@ -103,6 +103,62 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-java-mongodb-geohash" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/java-mongodb-geohash/" class="article-date">
+  <time datetime="2015-04-24T12:42:38.000Z" itemprop="datePublished">2015-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/java-mongodb-geohash/">基于MongoDB的PHP和Java版Geohash地理位置查询实现方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一直在折腾附近的人功能的实现，有很多种实现方案。而且大部分都是基于 <a href="http://en.wikipedia.org/wiki/Geohash">GeoHash</a> 算法实现的，也比较简单高效。</p>
+<p>MongoDB中准备的数据如下（PHP插入）：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="string">"_id"</span>: ObjectId(<span class="string">"5507823742ad00f8148bfcf3"</span>),</span><br><span class="line">   <span class="string">"sex"</span> : <span class="number">0</span>,</span><br><span class="line">   <span class="string">"nickName"</span> : <span class="string">"test"</span>,</span><br><span class="line">   <span class="string">"loc"</span>: [ <span class="comment">//localtion </span></span><br><span class="line">     <span class="number">114.068604</span>, <span class="comment">//longitude</span></span><br><span class="line">     <span class="number">22.531678</span>  <span class="comment">//latitude</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="string">"latitude"</span>: <span class="number">22.531678</span>,</span><br><span class="line">   <span class="string">"longitude"</span>: <span class="number">114.068604</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>插入数据后需要建立对应的2d索引：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.user.ensureIndex(&#123;<span class="string">"loc"</span>:<span class="string">"2d"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="PHP的实现方案">PHP的实现方案</h2><p>php做起来还是比较简单的，也不需要依赖框架什么的。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span></span><br><span class="line">	<span class="comment">#code ...</span></span><br><span class="line">	<span class="variable">$condition</span> = <span class="keyword">array</span>();		</span><br><span class="line">	<span class="variable">$condition</span>[<span class="string">'loc'</span>] = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'$near'</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">       	    (double)<span class="variable">$longitude</span>,</span><br><span class="line">       	    (double)<span class="variable">$latitude</span></span><br><span class="line">       	),</span><br><span class="line">		<span class="string">'$maxDistance'</span> =&gt; <span class="variable">$radius</span>/<span class="number">111</span>,</span><br><span class="line">	);</span><br><span class="line">	<span class="variable">$condition</span>[<span class="string">'sex'</span>] = <span class="number">0</span>;<span class="comment">//男</span></span><br><span class="line">	<span class="variable">$condition</span>[<span class="string">'nickName'</span>] = <span class="keyword">new</span> MongoRegex(<span class="string">'/^'</span>.<span class="variable">$nickName</span>.<span class="string">'/'</span>);<span class="comment">//模糊搜索</span></span><br><span class="line">	<span class="variable">$result</span> = MongoHelper::getInstance-&gt;find(<span class="string">"database"</span>, <span class="string">"user"</span>, <span class="variable">$condition</span>);<span class="comment">//封装的MongoDB查询方法，MongoHelper中连接MongoDB</span></span><br><span class="line">	<span class="comment">#code ...</span></span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Java的实现方案">Java的实现方案</h2><p>Java的实现方案也是类似的，因为我使用的是Spring 4.0，就采用Spring Data的方式进行的<br>
+        
+          <p class="article-more-link">
+            <a href="/java-mongodb-geohash/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GeoHash/">GeoHash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoTemplate/">MongoTemplate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
     <article id="post-git-github-account" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/git-github-account/" class="article-date">
@@ -439,69 +495,10 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexo/" class="article-date">
-  <time datetime="2015-03-25T22:33:49.000Z" itemprop="datePublished">2015-03-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo/">开始使用Hexo搭建博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>告别wordpress之后，我一直在寻找代替品，试过复杂的Jetty，也试过其他基于LAMP的CMS，最终选择了Hexo，安装也不算复杂：</p>
-<ol>
-<li><p>安装Node.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node  <span class="comment">#OS X 环境</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装Hexo</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>之后就可以在本地初始化博客了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="comment">#此间会提示你npm install </span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件_config.yml 配置站点信息,这个比较简单</p>
-        
-          <p class="article-more-link">
-            <a href="/hexo/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
-	  <script>window._bd_share_config={"common":{"bdSnsKey":{
-	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
-	  },"share":{
-	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
-	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
-	  }
-	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蜕变/">蜕变</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
@@ -514,7 +511,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: NaNpx;">Git</a><a href="/tags/GitHub/" style="font-size: NaNpx;">GitHub</a><a href="/tags/Java/" style="font-size: NaNpx;">Java</a><a href="/tags/MyBatis/" style="font-size: NaNpx;">MyBatis</a><a href="/tags/PHP/" style="font-size: NaNpx;">PHP</a><a href="/tags/UpdateProvider/" style="font-size: NaNpx;">UpdateProvider</a><a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/mac/" style="font-size: NaNpx;">mac</a><a href="/tags/php/" style="font-size: NaNpx;">php</a><a href="/tags/shell/" style="font-size: NaNpx;">shell</a><a href="/tags/蜕变/" style="font-size: NaNpx;">蜕变</a>
+      <a href="/tags/GeoHash/" style="font-size: 10px;">GeoHash</a><a href="/tags/Git/" style="font-size: 10px;">Git</a><a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a><a href="/tags/Java/" style="font-size: 20px;">Java</a><a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a><a href="/tags/MongoTemplate/" style="font-size: 10px;">MongoTemplate</a><a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a><a href="/tags/PHP/" style="font-size: 20px;">PHP</a><a href="/tags/Spring/" style="font-size: 10px;">Spring</a><a href="/tags/UpdateProvider/" style="font-size: 10px;">UpdateProvider</a><a href="/tags/blog/" style="font-size: 10px;">blog</a><a href="/tags/hexo/" style="font-size: 10px;">hexo</a><a href="/tags/mac/" style="font-size: 10px;">mac</a><a href="/tags/php/" style="font-size: 10px;">php</a><a href="/tags/shell/" style="font-size: 10px;">shell</a><a href="/tags/蜕变/" style="font-size: 10px;">蜕变</a>
     </div>
   </div>
 
@@ -524,7 +521,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -535,6 +532,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">最近文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/java-mongodb-geohash/">基于MongoDB的PHP和Java版Geohash地理位置查询实现方案</a>
+          </li>
         
           <li>
             <a href="/git-github-account/">客户端设置多个github账号</a>
@@ -550,10 +551,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/java-mybatis/">MyBatis动态SQL优化方案之@UpdateProvider</a>
-          </li>
-        
-          <li>
-            <a href="/hexo/">开始使用Hexo搭建博客</a>
           </li>
         
       </ul>
