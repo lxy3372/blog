@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Riky</title>
+  <title>Linux笔记:创建用户和私钥登陆 | Riky</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="google-site-verification" content="5hpOMWQZFpTDAuhF40D1gw3dxxSfyq0NGjY_3J7yQIo" />
   <meta name="Keywords" content="riky,rikyliu,rikyliu.com, keep it simple.">
-  <meta name="description" content="tsHsGFthKf">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Riky">
-<meta property="og:url" content="http://www.rikyliu.com/baidu_verify_tsHsGFthKf.html">
+  <meta name="description" content="Linux运维笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux笔记:创建用户和私钥登陆">
+<meta property="og:url" content="http://www.rikyliu.com/linux-note/index.html">
 <meta property="og:site_name" content="Riky">
-<meta property="og:description" content="tsHsGFthKf">
+<meta property="og:description" content="Linux运维笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Riky">
-<meta name="twitter:description" content="tsHsGFthKf">
+<meta name="twitter:title" content="Linux笔记:创建用户和私钥登陆">
+<meta name="twitter:description" content="Linux运维笔记">
   
     <link rel="alternative" href="/atom.xml" title="Riky" type="application/atom+xml">
   
@@ -101,19 +101,59 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-linux-note" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/baidu_verify_tsHsGFthKf.html" class="article-date">
-  <time datetime="2015-03-31T22:53:07.000Z" itemprop="datePublished">2015-04-01</time>
+    <a href="/linux-note/" class="article-date">
+  <time datetime="2015-11-30T08:08:45.000Z" itemprop="datePublished">2015-11-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux笔记:创建用户和私钥登陆
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        tsHsGFthKf
+        <p>最近侥幸获得一台低配版的阿里云主机，虽然是低配但是练练手也是挺好的。自从进入“某爱”之后，我开始不再只是程序猿了，居然还是“搞机”的运维狗，无奈啊，公司的云主机都是我一个一个Google然后配起来的，虽然不是很标准，但最起码还是能用的。趁此机会将之前倒腾过的部分技能重新梳理下，免得到时候又给忘记了。</p>
+<h4 id="注册新用户">注册新用户</h4><p>通过Root登录之后第一件事就是创建一个属于自己的用户，然后把root这个账号登录权限关闭了。防止被攻击（之前在不懂事的时候就被攻击了）。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser username<span class="comment">#后续输入密码，即可（可填项跳过）</span></span><br></pre></td></tr></table></figure></p>
+<p>这个地方我之前踩过一个坑，那就是<strong> <code>adduser</code> </strong> 和 <strong><code>useradd</code></strong>是有区别的，区别在于useradd仅仅只是创建了一个用户，没有密码。而<code>adduser</code>会为用户做许多准备工作：</p>
+<ol>
+<li>需要输入密码</li>
+<li>建立与当前创建用户名相同的group</li>
+<li>会在home目录下建立用户目录，用户登陆之后的默认目录就是这个，<code>cd ~</code>也是回到这个目录</li>
+<li>最重要的是可以通过SSH登陆了，其他就不太清楚了</li>
+</ol>
+<p>酱紫，基本上就可以用自己的账号密码登陆了<code>ssh user@ip</code>。<br><a id="more"></a></p>
+<h4 id="SSH私钥登陆">SSH私钥登陆</h4><ol>
+<li>先生成本地密钥<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -C <span class="string">"your email"</span> <span class="comment">#命令后续存在交互，一般回车忽略</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>主目录下<code>~/.ssh</code>文件夹中会生成对应<code>id_rsa</code>(私钥)和<code>id_rsa.pub</code>(公钥)</p>
+<ol>
+<li>上传公钥到服务器<br>网上较多的说法是scp上传id_rsa.pub到服务器上<code>~/.ssh/authorized_keys</code>,然后更改该文件权限为600即可，我试过并不好使。最简洁的方式是使用<code>ssh-copy-id</code>即可。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id  -i id_rsa.pub  user@ip</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>酱紫就可以直接用私钥登陆了。</p>
+<ol>
+<li>关闭root登陆和密码认证<br>为了服务器安全，我经常选择关闭掉root的登陆权限和密码登陆权限，更改两项配置即可<code>vim /etc/ssh/sshd_config</code>：<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">PermitRootLogin</span> <span class="built_in">no</span>  <span class="comment">#文件最后两行 将yes改为no</span></span><br><span class="line">SyslogFacility AUTHPRIV</span><br><span class="line">PasswordAuthentication <span class="built_in">no</span>  <span class="comment">#最后一行 将yes改为no</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>保存后重启即可<code>sudo reboot</code><br><strong> 这里需要记下的一点的是，修改改文件需要管理员权限，而经过上述创建的用户，并不是sudoers也就是无法通过使用sudo来更改此文件 </strong></p>
+<ol>
+<li>配置sudoers权限<br>该文件配置项还是比较多的，我只是想用户能用即可，其他的坑待以后来填，已root用户身份登陆<code>su</code>，编辑<code>/etc/sudoers</code>:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># User privilege specification</span></span><br><span class="line">root    ALL=(ALL:ALL) ALL</span><br><span class="line">username ALL=(ALL:ALL) ALL <span class="comment">#新添加</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>保存后就可以使用了，以上就是一些创建用户的基本上要做的（个人走过的路而已，已在高速上大神勿喷）。<br><strong>注： 关闭密码登陆而使用私钥登陆之后，请做好私钥备份。免得到时候私钥弄丢了，进不去就悲剧了</strong></p>
+
       
     </div>
     <footer class="article-footer">
@@ -127,17 +167,29 @@ ga('send', 'pageview');
 	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adduser/">adduser</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh-copy-id/">ssh-copy-id</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/git-github-account/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">客户端设置多个github账号</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
 
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="baidu_verify_tsHsGFthKf.html" data-title="" data-url="http://www.rikyliu.com/baidu_verify_tsHsGFthKf.html"></div>
+	<div class="ds-thread" data-thread-key="linux-note/" data-title="Linux笔记:创建用户和私钥登陆" data-url="http://www.rikyliu.com/linux-note/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
