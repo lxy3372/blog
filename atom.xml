@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep it simple.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.rikyliu.com/"/>
-  <updated>2015-12-01T09:12:28.000Z</updated>
+  <updated>2015-12-01T09:12:29.000Z</updated>
   <id>http://www.rikyliu.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.rikyliu.com/linux-svn-gitbook/"/>
     <id>http://www.rikyliu.com/linux-svn-gitbook/</id>
     <published>2015-12-01T07:31:27.000Z</published>
-    <updated>2015-12-01T09:12:28.000Z</updated>
+    <updated>2015-12-01T09:12:29.000Z</updated>
     <content type="html"><![CDATA[<p>由于公司木有运维，什么事都需要自己动手来做。在一步步搭建开发环境的过程中总是会遇到很多选择和坑。首当其冲的便是版本控制的选择：Git和SVN。<br>虽然我个人偏向于Git（GitLab或者Gitblit，之后会提到这些，毕竟是我自己经常使用的）。今天说说SVN：<br>安装就不用说了，除了一些较为复杂的软件，安装命令都是容易想得到的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install subversion</span><br></pre></td></tr></table></figure></p>
 <p>用SVN是大家讨论后得出的结果，我也觉得有两点在SVN上比较好用：</p>
 <ol>
