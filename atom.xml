@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep it simple.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.rikyliu.com/"/>
-  <updated>2015-11-30T10:18:06.000Z</updated>
+  <updated>2015-12-01T09:12:28.000Z</updated>
   <id>http://www.rikyliu.com/</id>
   
   <author>
@@ -15,11 +15,59 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Linux笔记：SVN]]></title>
+    <link href="http://www.rikyliu.com/linux-svn-gitbook/"/>
+    <id>http://www.rikyliu.com/linux-svn-gitbook/</id>
+    <published>2015-12-01T07:31:27.000Z</published>
+    <updated>2015-12-01T09:12:28.000Z</updated>
+    <content type="html"><![CDATA[<p>由于公司木有运维，什么事都需要自己动手来做。在一步步搭建开发环境的过程中总是会遇到很多选择和坑。首当其冲的便是版本控制的选择：Git和SVN。<br>虽然我个人偏向于Git（GitLab或者Gitblit，之后会提到这些，毕竟是我自己经常使用的）。今天说说SVN：<br>安装就不用说了，除了一些较为复杂的软件，安装命令都是容易想得到的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install subversion</span><br></pre></td></tr></table></figure></p>
+<p>用SVN是大家讨论后得出的结果，我也觉得有两点在SVN上比较好用：</p>
+<ol>
+<li>利用SVN部署DEV环境的web服务</li>
+<li>利用SVN部署WIKI,这里我采用的是<a href="http://www.gitbook.com" target="_blank" rel="external">GitBook</a>。(这是个不错的玩意儿)</li>
+</ol>
+<p>先记录下SVN安装SVN之后一些必要的操作：</p>
+<h4 id="1-_创建仓库">1. 创建仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/svn/web  <span class="comment">#缺省，细节参数未曾研究</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>之后会在该目录下生成一下目录大致如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── conf  <span class="comment">#配置文件目录</span></span><br><span class="line">│   ├── authz <span class="comment">#用户和组配置</span></span><br><span class="line">│   ├── hooks-env.tmpl</span><br><span class="line">│   ├── passwd <span class="comment">#用户账号密码</span></span><br><span class="line">│   └── svnserve.conf  <span class="comment">#svn服务配置(项目和系统相关)</span></span><br><span class="line">├── db</span><br><span class="line">├── format</span><br><span class="line">├── hooks <span class="comment">#hooks这个很重要</span></span><br><span class="line">│   ├── post-commit.tmpl</span><br><span class="line">│   ├── post-lock.tmpl</span><br><span class="line">│   ├── post-revprop-change.tmpl</span><br><span class="line">│   ├── post-unlock.tmpl</span><br><span class="line">│   ├── pre-commit.tmpl</span><br><span class="line">│   ├── pre-lock.tmpl</span><br><span class="line">│   ├── pre-revprop-change.tmpl</span><br><span class="line">│   ├── pre-unlock.tmpl</span><br><span class="line">│   ├── start-commit.tmpl</span><br><span class="line">│   └── test.log</span><br><span class="line">├── locks</span><br><span class="line">└── README.tx</span><br></pre></td></tr></table></figure></p>
+<h6 id="1-1_conf基本配置">1.1 conf基本配置</h6><ul>
+<li><p>authz 配置用户组和读写权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加：</span></span><br><span class="line">[groups]</span><br><span class="line">dev = dev,riky <span class="comment">#用户所属组</span></span><br><span class="line">[/]</span><br><span class="line">@dev = rw <span class="comment">#组配置权限(简单的配置)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>passwd 配置账号和密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置用户账号密码</span></span><br><span class="line">[users]</span><br><span class="line">riky = riky</span><br><span class="line">dev = dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>svnserve.conf 这个文件我没有做什么修改</p>
+</li>
+</ul>
+<p>酱紫基本svn服务就可以起起来了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#svn服务器目录/data/svn/web/  端口 3691</span></span><br><span class="line">sudo svnserve <span class="operator">-d</span> -T -r /data/svn/web/ --listen-port <span class="number">3691</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="1-2_利用hooks自动部署Web和WIKI">1.2 利用hooks自动部署Web和WIKI</h6><p>服务端启动了就可以检出到服务器web目录（<code>cd /data/web</code>）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">svn checkout svn://<span class="number">192.168</span>.<span class="number">1.1</span>:<span class="number">3691</span> <span class="comment">#检出整个目录</span></span><br><span class="line"><span class="comment">#然后提交几个测试文件上去即可</span></span><br><span class="line">touch test.txt</span><br><span class="line">svn add test.txt</span><br><span class="line">svn ci * -m<span class="string">"init"</span></span><br></pre></td></tr></table></figure></p>
+<p>这样我们就可以利用hooks了：</p>
+<ul>
+<li>将上述hooks中post-commit.tmpl 重命名为post-commit</li>
+<li>编辑添加以下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LANG=en_US.UTF-<span class="number">8</span></span><br><span class="line">SVN=/usr/bin/svn</span><br><span class="line"><span class="built_in">cd</span> /data/web  <span class="comment">#web客户端根目录</span></span><br><span class="line"><span class="variable">$SVN</span> update</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>保存之后，在其他电脑上检出svn，并提交php文件，就会在当前目录自动更新，实现SVN提交代码即可在Web服务器上生效了。</p>
+<h4 id="2-_开机启动">2. 开机启动</h4><p>为了避免停机后出现的麻烦,可以将svn启动加入到启动脚本中：<br>在/etc/init.d/下创建svn.sh:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#/bin/bash</span></span><br><span class="line"></span><br><span class="line">svnserve <span class="operator">-d</span> --listen-port <span class="number">3691</span> -T -r /data/svn/web/</span><br><span class="line"><span class="comment">#如果有多个svn仓库，可以加入多个</span></span><br></pre></td></tr></table></figure></p>
+<p>在/etc/rs.local中添加如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/svn.sh <span class="comment">#新加入，需放在exit前</span></span><br><span class="line"><span class="built_in">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>重启服务器即可生效。<br>以上就是最近在整服务器的时候一些摸索出来的配置，至于准不准备我也不太确定！总之，之后看到的时候还是能有一些帮助的，一些更细节性的配置以后在修正。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[linux学习笔记，svn和gitbook]]>
+    
+    </summary>
+    
+      <category term="svn" scheme="http://www.rikyliu.com/tags/svn/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Linux笔记:创建用户和私钥登陆]]></title>
     <link href="http://www.rikyliu.com/linux-note/"/>
     <id>http://www.rikyliu.com/linux-note/</id>
     <published>2015-11-30T08:08:45.000Z</published>
-    <updated>2015-11-30T10:18:06.000Z</updated>
+    <updated>2015-12-01T09:01:08.000Z</updated>
     <content type="html"><![CDATA[<p>最近侥幸获得一台低配版的阿里云主机，虽然是低配但是练练手也是挺好的。自从进入“某爱”之后，我开始不再只是程序猿了，居然还是“搞机”的运维狗，无奈啊，公司的云主机都是我一个一个Google然后配起来的，虽然不是很标准，但最起码还是能用的。趁此机会将之前倒腾过的部分技能重新梳理下，免得到时候又给忘记了。</p>
 <h4 id="注册新用户">注册新用户</h4><p>通过Root登录之后第一件事就是创建一个属于自己的用户，然后把root这个账号登录权限关闭了。防止被攻击（之前在不懂事的时候就被攻击了）。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser username<span class="comment">#后续输入密码，即可（可填项跳过）</span></span><br></pre></td></tr></table></figure></p>
 <p>这个地方我之前踩过一个坑，那就是<strong> <code>adduser</code> </strong> 和 <strong><code>useradd</code></strong>是有区别的，区别在于useradd仅仅只是创建了一个用户，没有密码。而<code>adduser</code>会为用户做许多准备工作：</p>
