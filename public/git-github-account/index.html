@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>客户端设置多个github账号 | Riky</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="google-site-verification" content="5hpOMWQZFpTDAuhF40D1gw3dxxSfyq0NGjY_3J7yQIo" />
+  <meta name="Keywords" content="riky,rikyliu,rikyliu.com, keep it simple.">
+  <meta name="description" content="客户端git配置多个github账号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="客户端设置多个github账号">
+<meta property="og:url" content="http://www.rikyliu.com/git-github-account/index.html">
+<meta property="og:site_name" content="Riky">
+<meta property="og:description" content="客户端git配置多个github账号">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="客户端设置多个github账号">
+<meta name="twitter:description" content="客户端git配置多个github账号">
+  
+    <link rel="alternative" href="/atom.xml" title="Riky" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-61442677-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script>
+	  var _hmt = _hmt || [];
+	  (function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?ab3a5bbb8f2804ae4ccf983ab55e5414";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+	  
+  })();
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Riky</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Keep it simple.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/xiao3372">Weibo</a>
+        
+          <a class="main-nav-link" href="https://github.com/lxy3372">GitHub</a>
+        
+          <a class="main-nav-link" href="http://lofter.rikyliu.com">Lofter</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+		
+								<form class="search-form" action="/search/index.html" method="get" accept-charset="utf-8">
+																				<input type="search" name="q"  id="st-search-inpu" class="search-form-input" maxlength="20" placeholder="Search" />
+																				<button type="submit" class="search-form-submit"></button>
+																										</form>
+																										
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-git-github-account" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/git-github-account/" class="article-date">
+  <time datetime="2015-04-22T14:33:31.000Z" itemprop="datePublished">2015-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      客户端设置多个github账号
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近由于需要在自己的电脑上办公，需要远程连接公司的Gitblit。但本机已经简单的配置GitHub的一些账号信息。在两个账号切换的过程中会有些麻烦，于是Google下，有了以下的解决方案：</p>
+<h4 id="（参考:_http://www-cnblogs-com/sosoft/p/3477578-html）">（参考: <a href="http://www.cnblogs.com/sosoft/p/3477578.html）" target="_blank" rel="external">http://www.cnblogs.com/sosoft/p/3477578.html）</a></h4><h3 id="步骤一：用ssh-keygen命令生成一组新的id_rsa_new和id_rsa_new-pub。">步骤一：用<code>ssh-keygen</code>命令生成一组新的id_rsa_new和id_rsa_new.pub。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#34;new email&#34;</span><br></pre></td></tr></table></figure>
+<p>平时我们都是直接回车，默认生成id_rsa和id_rsa.pub。这里特别需要注意，出现提示输入文件名的时候要输入与默认配置不一样的文件名，比如： id_rsa_new。</p>
+<h3 id="步骤二：配置~/-ssh/config文件，以我自己的机器为例。">步骤二：配置~/.ssh/config文件，以我自己的机器为例。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Default Git&#10;&#10;Host chdxy# &#27604;&#22914; chdxy&#10;&#10;HostName IP Address #&#19968;&#33324;&#37319;&#29992;&#23545;&#24212;&#22495;&#21517;&#21363;&#21487;  github.com&#10;&#10;User think #&#35813;&#29992;&#25143;&#20026;github&#36134;&#25143;&#29992;&#25143;&#21517;  &#22914;  CHDTEAM&#10;&#10;IdentityFile ~/.ssh/id_rsa&#10;&#10;#Second Git   &#21516;&#19978;&#37197;&#32622;&#37319;&#29992;&#19968;&#26679;&#30340;&#21363;&#21487;&#10;&#10;Host secondgit&#10;&#10;HostName IP Address #&#22495;&#21517;&#20063;&#21487;&#10;&#10;User think&#10;&#10;IdentityFile ~/.ssh/id_rsa_second</span><br></pre></td></tr></table></figure>
+<p>Host就是每个SSH连接的单独代号，IdentityFile告诉SSH连接去读取哪个私钥。</p>
+<h3 id="步骤三：执行ssh-agent让ssh识别新的私钥。">步骤三：执行ssh-agent让ssh识别新的私钥。</h3><a id="more"></a>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># &#22810;&#20010;&#36134;&#21495;&#30340;ssh-key &#37117;&#38656;&#35201;&#21152;&#36827;&#26469;&#10;&#10;#&#26368;&#22909;&#20808;&#27979;&#35797;&#19979;&#26159;&#21542;&#36830;&#25509;&#25104;&#21151;  ssh -T git@chdxy   &#65288;&#19968;&#33324;&#40664;&#35748;&#20026;git@github.com &#27492;&#22788;&#35774;&#32622;&#20102;Host&#65292;&#37319;&#29992;&#33258;&#24049;&#36134;&#21495;&#30340;Host&#21363;&#21487;&#65289;&#10;&#10;ssh-add ~/.ssh/id_rsa_new&#10;ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<p>该命令如果报错：Could not open a connection to your authentication agent.无法连接到ssh agent，可执行ssh-agent bash命令后再执行ssh-add命令。<br>以后，在clone或者add remote的时候，需要把config文件中的host代替git@remoteaddress中的remoteaddress。</p>
+<p>同时，你可以通过在特定的repo下执行下面的命令，生成区别于全局设置的user.name和user.email。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &#34;newname&#34;&#10;&#10;git config user.email &#34;newemail&#34;&#10;&#10;#git config --global --unset user.name &#21462;&#28040;&#20840;&#23616;&#35774;&#32622;&#10;&#10;#git config --global --unset user.email &#21462;&#28040;&#20840;&#23616;&#35774;&#32622;&#10;&#10;#&#22312;&#21516;&#19968;&#26426;&#22120;&#19981;&#21516;&#30446;&#24405;&#19979;&#20811;&#38534;&#36828;&#31243;&#21516;&#19968;&#20010;repo</span><br></pre></td></tr></table></figure></p>
+<p>然后执行对应的clone操作就可以了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/user1&#10;&#10;git clone git@chdxy/chdxy:xxx.git   #&#26684;&#24335;  git clone git@Host:&#29992;&#25143;&#21517;/&#20855;&#20307;.git   &#21363;&#25226;&#40664;&#35748;&#30340;github.com &#25913;&#25104; &#8220;Host&#8221;&#10;&#10;cd /home/user2&#10;git clone git@secondgit:User/xxx.git</span><br></pre></td></tr></table></figure>
+<p>上面的两条clone命令，虽然关联到同一个repo，却是通过不同ssh连接，当然也是不同的git账号。<br>注意：以上不要设置全局的user 和email 直接设置当前仓库的user 和email即可 （去掉—global，如果已设置加上—unset参数即可）</p>
+<p>接下来的各种操作（pull、push、fetch和普通的一样）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/linux-note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux笔记:创建用户和私钥登陆
+        
+      </div>
+    </a>
+  
+  
+    <a href="/php-fpm-shell/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">简单的进程启动和关闭Shell脚本制作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="git-github-account/" data-title="客户端设置多个github账号" data-url="http://www.rikyliu.com/git-github-account/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"rikyliu"
+	};
+		(function() {
+				var ds = document.createElement('script');
+						ds.type = 'text/javascript';ds.async = true;
+								ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+										ds.charset = 'UTF-8';
+												(document.getElementsByTagName('head')[0] 
+														 || document.getElementsByTagName('body')[0]).appendChild(ds);
+															
+															})();
+																</script>
+																<!-- 多说公共JS代码 end -->
+
+</section>
+        
+          <aside id="sidebar">
+  
+      
+
+	    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a><a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a><a href="/tags/Java/" style="font-size: 10px;">Java</a><a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a><a href="/tags/NFS/" style="font-size: 10px;">NFS</a><a href="/tags/PHP/" style="font-size: 10px;">PHP</a><a href="/tags/UpdateProvider/" style="font-size: 10px;">UpdateProvider</a><a href="/tags/adduser/" style="font-size: 10px;">adduser</a><a href="/tags/blog/" style="font-size: 10px;">blog</a><a href="/tags/hexo/" style="font-size: 10px;">hexo</a><a href="/tags/linux/" style="font-size: 20px;">linux</a><a href="/tags/mac/" style="font-size: 10px;">mac</a><a href="/tags/php/" style="font-size: 10px;">php</a><a href="/tags/shell/" style="font-size: 10px;">shell</a><a href="/tags/ssh/" style="font-size: 10px;">ssh</a><a href="/tags/ssh-copy-id/" style="font-size: 10px;">ssh-copy-id</a><a href="/tags/svn/" style="font-size: 10px;">svn</a><a href="/tags/蜕变/" style="font-size: 10px;">蜕变</a>
+    </div>
+  </div>
+
+
+	    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+	    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/linux-nfs/">linux笔记：NFS的使用</a>
+          </li>
+        
+          <li>
+            <a href="/linux-svn-gitbook/">Linux笔记：SVN</a>
+          </li>
+        
+          <li>
+            <a href="/linux-note/">Linux笔记:创建用户和私钥登陆</a>
+          </li>
+        
+          <li>
+            <a href="/git-github-account/">客户端设置多个github账号</a>
+          </li>
+        
+          <li>
+            <a href="/php-fpm-shell/">简单的进程启动和关闭Shell脚本制作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+	    
+		</aside>
+
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Riky Liu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);
+	};s=d.createElement(t);
+	  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+	    
+		})(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+		  _st('install','spVAiRGyhy7nX5pps-gs');
+		  </script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="http://weibo.com/xiao3372" class="mobile-nav-link">Weibo</a>
+  
+    <a href="https://github.com/lxy3372" class="mobile-nav-link">GitHub</a>
+  
+    <a href="http://lofter.rikyliu.com" class="mobile-nav-link">Lofter</a>
+  
+</nav>
+    <% if (config.disqus_shortname){ %>
+<script>
+  var disqus_shortname = '<%= config.disqus_shortname %>';
+  <% if (page.permalink){ %>
+  var disqus_url = '<%= page.permalink %>';
+  <% } %>
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<% } %>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<% if (theme.fancybox){ %>
+  <%- css('fancybox/jquery.fancybox') %>
+  <%- js('fancybox/jquery.fancybox.pack') %>
+<% } %>
+
+<%- js('js/script') %>
+
+  </div>
+</body>
+</html>

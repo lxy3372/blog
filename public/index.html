@@ -5,26 +5,52 @@
   
   <title>Riky</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Riky`s Blog">
+  <meta name="google-site-verification" content="5hpOMWQZFpTDAuhF40D1gw3dxxSfyq0NGjY_3J7yQIo" />
+  <meta name="Keywords" content="riky,rikyliu,rikyliu.com, keep it simple.">
+  <meta name="description" content="Riky’sBlog, keep it simple.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Riky">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://www.rikyliu.com/index.html">
 <meta property="og:site_name" content="Riky">
-<meta property="og:description" content="Riky`s Blog">
+<meta property="og:description" content="Riky’sBlog, keep it simple.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Riky">
-<meta name="twitter:description" content="Riky`s Blog">
+<meta name="twitter:description" content="Riky’sBlog, keep it simple.">
   
     <link rel="alternative" href="/atom.xml" title="Riky" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-61442677-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script>
+	  var _hmt = _hmt || [];
+	  (function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?ab3a5bbb8f2804ae4ccf983ab55e5414";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+	  
+  })();
+  </script>
 </head>
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -37,7 +63,7 @@
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Riky`s Blog</a>
+          <a href="/" id="subtitle">Keep it simple.</a>
         </h2>
       
     </div>
@@ -45,9 +71,15 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/">首页</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/xiao3372">Weibo</a>
+        
+          <a class="main-nav-link" href="https://github.com/lxy3372">GitHub</a>
+        
+          <a class="main-nav-link" href="http://lofter.rikyliu.com">Lofter</a>
         
       </nav>
       <nav id="sub-nav">
@@ -57,18 +89,24 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+		
+								<form class="search-form" action="/search/index.html" method="get" accept-charset="utf-8">
+																				<input type="search" name="q"  id="st-search-inpu" class="search-form-input" maxlength="20" placeholder="Search" />
+																				<button type="submit" class="search-form-submit"></button>
+																										</form>
+																										
       </div>
     </div>
   </div>
 </header>
+
       <div class="outer">
         <section id="main">
   
-    <article id="post-New-Post" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-linux-nfs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/03/26/New-Post/" class="article-date">
-  <time datetime="2015-03-25T22:33:49.000Z" itemprop="datePublished">2015-03-26</time>
+    <a href="/linux-nfs/" class="article-date">
+  <time datetime="2015-12-03T09:42:06.000Z" itemprop="datePublished">2015-12-03</time>
 </a>
     
   </div>
@@ -79,7 +117,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/New-Post/">开始使用Hexo搭建博客</a>
+      <a class="article-title" href="/linux-nfs/">linux笔记：NFS的使用</a>
     </h1>
   
 
@@ -87,45 +125,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>告别wordpress之后，我一直在寻找代替品，试过复杂的Jetty，也试过其他基于LAMP的CMS，最终选择了Hexo，安装也不算复杂：</p>
+        <p>填坑不易，且填且珍惜！幸亏最近自己有整理相关的文档，有些东西自己在脑海里整理过一遍写出来，基本就不会忘记了，即使是有些偏差还是可以修正，加深印象。</p>
+<p>先说说为什么会使用上NFS（Network File System, 作为一个小白程序猿，之前真的压根就没有听说过这玩意儿，我果然很菜），网站之前的服务器部署一直只有一台服务器（lnmp一键安装了），随然流量的增大，除了做一些软性的优化之外（缓存），我逐渐将Redis和Mysql迁移到了另一台服务器，以减少主站的压力。在此基础上考虑到可能会推一些引流的活动，以备用为目的申请了一台备用主机。以此为契机，我开始研究Nginx的负载均衡（之后整理下负载均衡的配置），成功的将主站服务器和备用 服务器纳入集群中。那这时候问题就来了：</p>
 <ol>
-<li><p>安装Node.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node  <span class="comment">#OS X 环境</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装Hexo</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>之后就可以在本地初始化博客了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="comment">#此间会提示你npm install </span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件_config.yml 配置站点信息,这个比较简单</p>
-</li>
-<li><p>生成新的文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"标题"</span> <span class="comment">#会在source/_post 下生成对应的md文件，采用markdown编辑器编辑即可</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后生成静态化站点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>本地测试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果需要发布的Github上，先在配置文件中配置好Github信息，这里需要现在github账号下创建项目blog（注意不要创建README）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">      <span class="built_in">type</span>: github</span><br><span class="line">      repository: https://github.com/lxy3372/blog.git</span><br><span class="line">      branch: gh-pages</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发布</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo deploy --generate</span><br></pre></td></tr></table></figure>
-</li>
+<li>备用主机没有外网IP，网站一些爬虫无法请求到外网；</li>
+<li>因为没有使用第三方存储，上传的图片一致存储在主站的静态资源目录，以images.rikyliu.com的形式去访问。虽然通过nginx转发到备用主机可以上传上去，但是此主机没有外网IP，无法访问其静态资源。</li>
 </ol>
-<hr>
-<p>杂记：<br>   在折腾期间也遇到了一些问题，比如编辑_config.yml的时候，如果用vim编辑的话，在启动server的时候会出现格式错误的问题，而直接用文本编辑则不会出现这种问题，这可能跟我vim的配置有些关系。该文也是我参考了其他朋友的文章，按自己搭建的顺序写的，也算是重复造轮子了，不过当Markdown练练手也是不错的。</p>
-
+<p>虽然这两个问题都可以用nginx的proxy_pass来转发到主站服务器解决，但是当一些接口逻辑涉及到文件处理时却不是很方便，于是我找到了NFS来解决此问题：<br><img src="http://7xi3xm.com1.z0.glb.clouddn.com/server.jpg" alt="服务器架构"><br>
+        
+          <p class="article-more-link">
+            <a href="/linux-nfs/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/26/New-Post/" data-id="ci7pc85xz0000nafy7jeabpss" class="article-share-link">Share</a>
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蜕变/">蜕变</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NFS/">NFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -133,57 +158,306 @@
 </article>
 
 
+
+
   
+    <article id="post-linux-svn-gitbook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/linux-svn-gitbook/" class="article-date">
+  <time datetime="2015-12-01T07:31:27.000Z" itemprop="datePublished">2015-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/linux-svn-gitbook/">Linux笔记：SVN</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于公司木有运维，什么事都需要自己动手来做。在一步步搭建开发环境的过程中总是会遇到很多选择和坑。首当其冲的便是版本控制的选择：Git和SVN。<br>虽然我个人偏向于Git（GitLab或者Gitblit，之后会提到这些，毕竟是我自己经常使用的）。今天说说SVN：<br>安装就不用说了，除了一些较为复杂的软件，安装命令都是容易想得到的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install subversion</span><br></pre></td></tr></table></figure></p>
+<p>用SVN是大家讨论后得出的结果，我也觉得有两点在SVN上比较好用：</p>
+<ol>
+<li>利用SVN部署DEV环境的web服务</li>
+<li>利用SVN部署WIKI,这里我采用的是<a href="http://www.gitbook.com">GitBook</a>。(这是个不错的玩意儿)</li>
+</ol>
+<p>先记录下SVN安装SVN之后一些必要的操作：</p>
+<h4 id="1-_创建仓库">1. 创建仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/svn/web  <span class="comment">#缺省，细节参数未曾研究</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/linux-svn-gitbook/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/">svn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-linux-note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/linux-note/" class="article-date">
+  <time datetime="2015-11-30T08:08:45.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/linux-note/">Linux笔记:创建用户和私钥登陆</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近侥幸获得一台低配版的阿里云主机，虽然是低配但是练练手也是挺好的。自从进入“某爱”之后，我开始不再只是程序猿了，居然还是“搞机”的运维狗，无奈啊，公司的云主机都是我一个一个Google然后配起来的，虽然不是很标准，但最起码还是能用的。趁此机会将之前倒腾过的部分技能重新梳理下，免得到时候又给忘记了。</p>
+<h4 id="注册新用户">注册新用户</h4><p>通过Root登录之后第一件事就是创建一个属于自己的用户，然后把root这个账号登录权限关闭了。防止被攻击（之前在不懂事的时候就被攻击了）。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser username<span class="comment">#后续输入密码，即可（可填项跳过）</span></span><br></pre></td></tr></table></figure></p>
+<p>这个地方我之前踩过一个坑，那就是<strong> <code>adduser</code> </strong> 和 <strong><code>useradd</code></strong>是有区别的，区别在于useradd仅仅只是创建了一个用户，没有密码。而<code>adduser</code>会为用户做许多准备工作：</p>
+<ol>
+<li>需要输入密码</li>
+<li>建立与当前创建用户名相同的group</li>
+<li>会在home目录下建立用户目录，用户登陆之后的默认目录就是这个，<code>cd ~</code>也是回到这个目录</li>
+<li>最重要的是可以通过SSH登陆了，其他就不太清楚了</li>
+</ol>
+<p>酱紫，基本上就可以用自己的账号密码登陆了<code>ssh user@ip</code>。<br>
+        
+          <p class="article-more-link">
+            <a href="/linux-note/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adduser/">adduser</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh-copy-id/">ssh-copy-id</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-git-github-account" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/git-github-account/" class="article-date">
+  <time datetime="2015-04-22T14:33:31.000Z" itemprop="datePublished">2015-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/git-github-account/">客户端设置多个github账号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近由于需要在自己的电脑上办公，需要远程连接公司的Gitblit。但本机已经简单的配置GitHub的一些账号信息。在两个账号切换的过程中会有些麻烦，于是Google下，有了以下的解决方案：</p>
+<h4 id="（参考:_http://www-cnblogs-com/sosoft/p/3477578-html）">（参考: <a href="http://www.cnblogs.com/sosoft/p/3477578.html）">http://www.cnblogs.com/sosoft/p/3477578.html）</a></h4><h3 id="步骤一：用ssh-keygen命令生成一组新的id_rsa_new和id_rsa_new-pub。">步骤一：用<code>ssh-keygen</code>命令生成一组新的id_rsa_new和id_rsa_new.pub。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#34;new email&#34;</span><br></pre></td></tr></table></figure>
+<p>平时我们都是直接回车，默认生成id_rsa和id_rsa.pub。这里特别需要注意，出现提示输入文件名的时候要输入与默认配置不一样的文件名，比如： id_rsa_new。</p>
+<h3 id="步骤二：配置~/-ssh/config文件，以我自己的机器为例。">步骤二：配置~/.ssh/config文件，以我自己的机器为例。</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Default Git&#10;&#10;Host chdxy# &#27604;&#22914; chdxy&#10;&#10;HostName IP Address #&#19968;&#33324;&#37319;&#29992;&#23545;&#24212;&#22495;&#21517;&#21363;&#21487;  github.com&#10;&#10;User think #&#35813;&#29992;&#25143;&#20026;github&#36134;&#25143;&#29992;&#25143;&#21517;  &#22914;  CHDTEAM&#10;&#10;IdentityFile ~/.ssh/id_rsa&#10;&#10;#Second Git   &#21516;&#19978;&#37197;&#32622;&#37319;&#29992;&#19968;&#26679;&#30340;&#21363;&#21487;&#10;&#10;Host secondgit&#10;&#10;HostName IP Address #&#22495;&#21517;&#20063;&#21487;&#10;&#10;User think&#10;&#10;IdentityFile ~/.ssh/id_rsa_second</span><br></pre></td></tr></table></figure>
+<p>Host就是每个SSH连接的单独代号，IdentityFile告诉SSH连接去读取哪个私钥。</p>
+<h3 id="步骤三：执行ssh-agent让ssh识别新的私钥。">步骤三：执行ssh-agent让ssh识别新的私钥。</h3>
+        
+          <p class="article-more-link">
+            <a href="/git-github-account/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-php-fpm-shell" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/php-fpm-shell/" class="article-date">
+  <time datetime="2015-04-22T14:12:55.000Z" itemprop="datePublished">2015-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/php-fpm-shell/">简单的进程启动和关闭Shell脚本制作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>整个Shell相对简单，重点理解<code>awk</code> ，管道<code>|</code>,以及 <code>xargs kill -9</code> 应该就比较清晰了，<br>整个过程就是一个查询-&gt;筛选-&gt;然后kill-&gt;到在启动的过程，其他服务如Redis,MongoDB,Memecache以及Mysql和Apache都可以用类似的方式来制作简单的Shell脚本。<br>使用相对简单：<code>./php-fpm.sh start</code><br>如果不能放到/bin/bash目录，可以采用软连接<code>ln -s</code>或者别名<code>alias fpm=&#39;/usr/local/bash/php-fpm.sh&#39;</code>的方式来简化命令操作：</p>
+<h4 id="别名：">别名：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#命令行操作即可</span></span><br><span class="line"><span class="comment">#输出到.bashrc</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"alias phpfpm='/usr/local/bash/php-fpm'"</span>&gt;&gt;~/.bashrc</span><br><span class="line"><span class="comment">#使其生效</span></span><br><span class="line">soure ~/.bashrc</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/php-fpm-shell/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+	  <div style='float:right;' class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+	  <script>window._bd_share_config={"common":{"bdSnsKey":{
+	  },"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"
+	  },"share":{
+	  },"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"
+	  },"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]
+	  }
+	  };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
           <aside id="sidebar">
   
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蜕变/">蜕变</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
+      
 
-  
-    
+	    
+      
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/mac/" style="font-size: NaNpx;">mac</a><a href="/tags/蜕变/" style="font-size: NaNpx;">蜕变</a>
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a><a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a><a href="/tags/Java/" style="font-size: 10px;">Java</a><a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a><a href="/tags/NFS/" style="font-size: 10px;">NFS</a><a href="/tags/PHP/" style="font-size: 10px;">PHP</a><a href="/tags/UpdateProvider/" style="font-size: 10px;">UpdateProvider</a><a href="/tags/adduser/" style="font-size: 10px;">adduser</a><a href="/tags/blog/" style="font-size: 10px;">blog</a><a href="/tags/hexo/" style="font-size: 10px;">hexo</a><a href="/tags/linux/" style="font-size: 20px;">linux</a><a href="/tags/mac/" style="font-size: 10px;">mac</a><a href="/tags/php/" style="font-size: 10px;">php</a><a href="/tags/shell/" style="font-size: 10px;">shell</a><a href="/tags/ssh/" style="font-size: 10px;">ssh</a><a href="/tags/ssh-copy-id/" style="font-size: 10px;">ssh-copy-id</a><a href="/tags/svn/" style="font-size: 10px;">svn</a><a href="/tags/蜕变/" style="font-size: 10px;">蜕变</a>
     </div>
   </div>
 
-  
-    
+
+	    
+      
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
-  
-    
+
+	    
+      
   <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
+    <h3 class="widget-title">最近文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2015/03/26/New-Post/">开始使用Hexo搭建博客</a>
+            <a href="/linux-nfs/">linux笔记：NFS的使用</a>
+          </li>
+        
+          <li>
+            <a href="/linux-svn-gitbook/">Linux笔记：SVN</a>
+          </li>
+        
+          <li>
+            <a href="/linux-note/">Linux笔记:创建用户和私钥登陆</a>
+          </li>
+        
+          <li>
+            <a href="/git-github-account/">客户端设置多个github账号</a>
+          </li>
+        
+          <li>
+            <a href="/php-fpm-shell/">简单的进程启动和关闭Shell脚本制作</a>
           </li>
         
       </ul>
     </div>
   </div>
 
-  
-</aside>
+
+	    
+		</aside>
+
+
         
       </div>
       <footer id="footer">
@@ -195,24 +469,55 @@
     </div>
   </div>
 </footer>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);
+	};s=d.createElement(t);
+	  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+	    
+		})(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+		  _st('install','spVAiRGyhy7nX5pps-gs');
+		  </script>
+
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">首页</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="http://weibo.com/xiao3372" class="mobile-nav-link">Weibo</a>
+  
+    <a href="https://github.com/lxy3372" class="mobile-nav-link">GitHub</a>
+  
+    <a href="http://lofter.rikyliu.com" class="mobile-nav-link">Lofter</a>
   
 </nav>
-    
+    <% if (config.disqus_shortname){ %>
+<script>
+  var disqus_shortname = '<%= config.disqus_shortname %>';
+  <% if (page.permalink){ %>
+  var disqus_url = '<%= page.permalink %>';
+  <% } %>
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<% } %>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 
+<% if (theme.fancybox){ %>
+  <%- css('fancybox/jquery.fancybox') %>
+  <%- js('fancybox/jquery.fancybox.pack') %>
+<% } %>
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
+<%- js('js/script') %>
 
   </div>
 </body>

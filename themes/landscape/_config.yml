@@ -1,26 +1,31 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
+  首页: /
+  归档: /archives
+  Weibo: http://weibo.com/xiao3372
+  GitHub: https://github.com/lxy3372
+  Lofter: http://lofter.rikyliu.com
 rss: /atom.xml
 
 # Content
-excerpt_link: Read More
+excerpt_link: 阅读全文
 fancybox: true
 
 # Sidebar
 sidebar: right
 widgets:
 - category
-- tag
 - tagcloud
 - archive
 - recent_posts
 
 # Miscellaneous
-google_analytics:
-favicon: /favicon.png
+google_analytics: UA-61442677-1
+favicon: /favicon.ico
 twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+
+swift_search:
+  enable: true
